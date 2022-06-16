@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Bookly.Models.Book>
+
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "/views/shared/_SellerLayout .cshtml";
+}
+<div class="container">
+    <h2>DashBoard</h2>
+
+    <p>
+        @Html.ActionLink("Add new book", "Add", null, new { @class = "btn btn-success btn-xs" })
+    </p>
+    <table class="table table-bordered table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.store)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pages)
+            </th>
+
+            <th width="15%"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.store)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pages)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                    @Html.ActionLink("Details", "Detail", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+
+                    <a href="@Url.Action("Delete", new { id = item.Id })" onclick="return confirm ('Are you sure want to delete this book?');">
+                        <input type="submit" value="Delete"   class="btn btn-danger btn-xs"/>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>

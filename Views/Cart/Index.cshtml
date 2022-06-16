@@ -1,0 +1,98 @@
+﻿@model Bookly.Models.Cart
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    @if (Model.CartLines.Count > 0)
+    {
+
+        <h2>Your order</h2>
+
+        <table class="table table-hover table-bordered ">
+            <thead>
+                <tr>
+                    <th>Cover</th>
+                    <th>Title</th>
+                    <th>Quantity</th>
+                    <th>price</th>
+                    <th>Sub total</th>
+                    <th>Process</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var book in Model.CartLines)
+                {
+                    <tr>
+                        <td>
+                            @*<img src="@Url.Content(book.Book.CoverPath)" class="img-responsive" alt="" width="50px" />*@
+                            <a href="@Url.Action("Detail", "Book", new { id = book.Book.Id })">
+                                <img src="@Url.Content(book.Book.CoverPath)" alt="" width=" 50px">
+                            </a>
+                        </td>
+                        <td>@book.Book.Title</td>
+                        <td>@book.Quantity</td>
+                        <td>@book.Book.Price</td>
+                        <td>@(book.Book.Price * book.Quantity)</td>
+                        <td width="50px">
+                            @using (Html.BeginForm("DeleteFromCart", "Cart"))
+                            {
+                                @Html.Hidden("Id", book.Book.Id)
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-circle-minus "></i>
+                                    Delete
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>
+                        @Model.Total() $
+                    </td>
+                    <td colspan="1"></td>
+
+                </tr>
+            </tfoot>
+        </table>
+
+
+        <div class="text-center">
+            <a class="btn btn-primary" href="/Book/Index">
+                <i class="fa fa-angle-double-left"></i>
+                Continue shopping
+            </a>
+            <a class="btn btn-primary" href="/Cart/Checkout">
+                <i class="fa-solid fa-check"></i>
+                Check out
+            </a>
+        </div>
+    }
+
+
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            There is no book in your card!
+        </div>
+
+        <div class="text-center">
+            <a class="btn btn-primary" href="/Book/Index">
+                <i class="fa fa-angle-double-left"></i>
+                Go for shopping!
+            </a>
+        </div>
+            }
+
+        </div>
+
+

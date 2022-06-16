@@ -1,0 +1,67 @@
+﻿@model Bookly.Models.ShippingDetails 
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Order Details</h2>
+            <p>
+                Please fill your order's informations!'
+            </p>
+            <hr />
+            @Html.ValidationSummary()
+
+            @using (Html.BeginForm())
+            {
+                <div class="form-group ">
+                    <label class="col-sm-2 ">Ad Soyad</label>
+
+                    @Html.TextBoxFor(x => x.FullNmae, new { @class = "form-control " })
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">Adres tipi</label>
+                    @Html.TextBoxFor(x => x.AdressType, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">Detayli adres</label>
+                    @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">Sehir</label>
+                    @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">Semt</label>
+                    @Html.TextBoxFor(x => x.Semt, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">MAhalle</label>
+                    @Html.TextBoxFor(x => x.Mahalle, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 ">Posta kodu</label>
+                    @Html.TextBoxFor(x => x.PostaKodu, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+

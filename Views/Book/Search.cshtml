@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Bookly.Models.Book>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tilte
+        </th>
+        <th>
+            Descrition
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            store
+        </th>
+        <th>
+            Pages
+        </th>
+        <th>
+            CoverPath
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.store)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoverPath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
