@@ -22,7 +22,7 @@
 
                 @foreach (var book in Model)
                 {
-                    <a href="@Url.Action("Detail", "Book", new { id = book.Id })" class="swiper-slide">
+                    <a href="@Url.Action("Detail", "Book", new { id = book.Id })" class="">
                         <img src="@Url.Content(book.CoverPath)" alt="">
                     </a>
 

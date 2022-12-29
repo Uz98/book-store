@@ -1,0 +1,21 @@
+﻿@model List<Bookly.Models.Book>
+@{
+    ViewBag.Title = "all";
+}
+
+<h2>all books</h2>
+
+<div class="swiper books-slider">
+    <div class="swiper-wrapper">
+
+        @foreach (var book in Model)
+        {
+            <a href="@Url.Action("Detail", "Book", new { id = book.Id })" class="">
+                <img src="@Url.Content(book.CoverPath)" alt="" width="150px">
+            </a>
+            <h4>@book.Title</h4>
+
+        }
+    </div>
+    <img src="image/stand.png" class="stand" alt="">
+</div>

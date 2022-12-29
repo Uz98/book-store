@@ -14,17 +14,31 @@ namespace Bookly.Controllers
         // GET: Book
         public ActionResult Index()
         {
-            var f = new List<Book>()
-                ;
+            var f = new List<Book>();
             foreach (var book in db.books)
             {
-                if (book.Description.Length > 50)
+                if (book.Description.Length > 50) { 
                 book.Description = book.Description.Substring(1,40)+"...";
+                }
                 f.Add(book);
             }
             return View(f);
         }
 
+        //need to be improved
+        public ActionResult all()
+        {
+            var f = new List<Book>();
+            foreach (var book in db.books)
+            {
+                if (book.Description.Length > 50)
+                {
+                    book.Description = book.Description.Substring(1, 40) + "...";
+                }
+                f.Add(book);
+            }
+            return View(f);
+        }
 
 
 
@@ -114,8 +128,14 @@ namespace Bookly.Controllers
         public ActionResult Edit(Book book)
         {
             var aa= db.books.Find(book.Id);
+            aa.Price = book.Price;
+            aa.Pages = book.Pages;
+            aa.store = book.store;
+            aa.Description = book.Description;
+            aa.Title = book.Title;
+            aa.CoverPath = book.CoverPath;
+            aa.CoverFile = book.CoverFile;
 
-            aa = book;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

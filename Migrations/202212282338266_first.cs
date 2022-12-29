@@ -1,4 +1,4 @@
-﻿namespace Bookly.Migrations
+namespace Bookly.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -14,6 +14,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
+                        Price = c.Int(nullable: false),
                         store = c.String(),
                         Pages = c.Int(nullable: false),
                         CoverPath = c.String(),
