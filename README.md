@@ -1,6 +1,6 @@
 # Book-store
 
-## screen shots
+## screen shotss
 
 ![11](https://user-images.githubusercontent.com/73998098/174016376-e54e76ae-678f-49ce-9616-9b017371c9af.PNG)
 
